@@ -26,16 +26,7 @@ func main() {
 	failOnError(err, "Failed to open a channel")
 	defer ch.Close()
 
-	err = ch.ExchangeDeclare(
-		"federation.exchange", // name
-		"topic",               // type
-		true,                  // durable
-		false,                 // auto-deleted
-		false,                 // internal
-		false,                 // no-wait
-		nil,                   // arguments
-	)
-	failOnError(err, "Failed to declare an exchange")
+	//On publisher in Federation type Exchange no need to declare exchange
 
 	body := bodyFrom(os.Args)
 	err = ch.Publish(
